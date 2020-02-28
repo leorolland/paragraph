@@ -160,7 +160,7 @@ class Paragraph {
         clone.replaceChild(textNode, child)
       }
     })
-    return clone.outerHTML
+    return clone.innerHTML
   }
 
   /**
