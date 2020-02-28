@@ -192,8 +192,7 @@ class Paragraph {
   static get sanitize() {
     return {
       text: {
-        br: true,
-        span: false,
+        br: true
       }
     };
   }
