@@ -138,8 +138,29 @@ class Paragraph {
    */
   save(toolsContent) {
     return {
-      text: toolsContent.innerHTML
+      text: this.unwrapMath(toolsContent)
     };
+  }
+  
+  /**
+   * 
+   * @param blocks Editor.JS blocks save output
+   * @param {HTMLElement} el 
+   */
+  unwrapMath(el) {
+    const clone = el.cloneNode(true)
+    clone.childNodes.forEach(child => {
+      if (child.className == "formulae") {
+        console.debug('unwrapping', child)
+        let rawFormulae = ""
+        child.childNodes.forEach(subchild => {
+          if (subchild.className == "rawFormulae") rawFormulae = '`' + subchild.innerHTML + '`'
+        })
+        const textNode = document.createTextNode(rawFormulae)
+        clone.replaceChild(textNode, child)
+      }
+    })
+    return clone.outerHTML
   }
 
   /**
@@ -172,6 +193,7 @@ class Paragraph {
     return {
       text: {
         br: true,
+        span: false,
       }
     };
   }

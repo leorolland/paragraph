@@ -34,7 +34,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'paragraph.js',
     library: 'Paragraph',
     libraryTarget: 'umd'
   }
