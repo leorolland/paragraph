@@ -150,8 +150,7 @@ class Paragraph {
   unwrapMath(el) {
     const clone = el.cloneNode(true)
     clone.childNodes.forEach(child => {
-      if (child.className == "formulae") {
-        console.debug('unwrapping', child)
+      if (child.className == "formula") {
         let rawFormulae = ""
         child.childNodes.forEach(subchild => {
           if (subchild.className == "rawFormulae") rawFormulae = '`' + subchild.innerHTML + '`'
