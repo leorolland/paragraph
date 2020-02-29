@@ -151,11 +151,11 @@ class Paragraph {
     const clone = el.cloneNode(true)
     clone.childNodes.forEach(child => {
       if (child.className == "formula") {
-        let rawFormulae = ""
+        let rawFormula = ""
         child.childNodes.forEach(subchild => {
-          if (subchild.className == "rawFormulae") rawFormulae = '`' + subchild.innerHTML + '`'
+          if (subchild.className == "rawFormula") rawFormula = '`' + subchild.innerHTML + '`'
         })
-        const textNode = document.createTextNode(rawFormulae)
+        const textNode = document.createTextNode(rawFormula)
         clone.replaceChild(textNode, child)
       }
     })
